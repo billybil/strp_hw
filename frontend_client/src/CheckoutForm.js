@@ -102,8 +102,6 @@ export default function CheckoutForm() {
         />
 
         <p/>
-
-        <p>HELLO FOO</p>
           
         <CardElement id="card-element" options={cardStyle} onChange={handleChange} />
         <button
