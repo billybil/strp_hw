@@ -1,0 +1,17 @@
+{
+  "name": "stripe_payments_node_react",
+  "version": "1.0.0",
+  "description": "stripe homework",
+  "main": "express_server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "stripe": "^8.114.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node express_server.js"
+  },
+  "author": "bil.nguyen@gmail.com",
+  "license": "ISC"
+}
