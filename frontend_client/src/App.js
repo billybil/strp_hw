@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
-import HotdotPinSelector from "./HotdogPinSelector"
 import './App.css';
-import HotdogPinSelector from './HotdogPinSelector';
 
 // Stripe stuff
 const promise = loadStripe("pk_test_51Hd23ALCD5Pym0HWAwPFZC2lyy6suo3LjBeiYUBbN0jRHXiZUUFXOv3HGDonRk6wWlt5HwHaEB8fkXYBBlzaALyQ00L8B39dQf");
@@ -18,8 +16,6 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-        <HotdogPinSelector></HotdogPinSelector>
-
         <Elements stripe={promise}>
           <CheckoutForm />
         </Elements>
