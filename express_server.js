@@ -1,12 +1,11 @@
 const express = require("express");
 const app = express();
 app.use(require('cors')());
-const { resolve } = require("path");
-// This is your real test secret API key.
-const stripe = require("stripe")("sk_test_51Hd23ALCD5Pym0HWlYbzYJAMuV35kyAWHhTWMFCxGjb7K9UdDitk8u8BWROT3Puz7RNzGjqmTSRjL6eHsYRf3l1300GgOkvaRo");
-
 app.use(express.static("."));
 app.use(express.json());
+
+// TODO: Dont put the the key like this. Move it to env.
+const stripe = require("stripe")("sk_test_51Hd23ALCD5Pym0HWlYbzYJAMuV35kyAWHhTWMFCxGjb7K9UdDitk8u8BWROT3Puz7RNzGjqmTSRjL6eHsYRf3l1300GgOkvaRo");
 
 const calculateOrderAmount = items => {
   const cost = 1000;

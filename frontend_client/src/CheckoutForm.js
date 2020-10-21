@@ -94,39 +94,43 @@ export default function CheckoutForm() {
   };
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit}>
-      <input 
-        type="text"
-        placeholder="GET YOUR PINS!"
-        onChange={handlePinChange}
-        required
-      />
-
-      <br/>
+    <div>
+      <form id="payment-form" onSubmit={handleSubmit}>
+        <input 
+          type="text"
+          placeholder="GET YOUR PINS!"
+          onChange={handlePinChange}
+          required
+        />
         
-      <CardElement id="card-element" options={cardStyle} onChange={handleChange} />
-      <button
-          disabled={processing || disabled || succeeded}
-          id="submit">
-          <span id="button-text">
-              {processing ? (
-                  <div className="spinner" id="spinner"></div>
-              ) : (
-                  "Pay"
-              )}
-          </span>
-      </button>
+        <br/><br/>
+        
+        <CardElement id="card-element" options={cardStyle} onChange={handleChange} />
+        <button
+            disabled={processing || disabled || succeeded}
+            id="submit">
+            <span id="button-text">
+                {processing ? (
+                    <div className="spinner" id="spinner"></div>
+                ) : (
+                    "Pay"
+                )}
+            </span>
+        </button>
+      </form>
       
+      <br/>
+
       {/* Show any error that happens when processing the payment */}
       {error && (
-          <div className="card-error" role="alert">
+        <p className="card-error" role="alert">
       {error}
-      </div>)}
-
+        </p>)}
       {/* Show a success message upon completion */}
       <p className={succeeded ? "result-message" : "result-message hidden"}>
-        Payment succeeded!
+        {numPins} hotdog pins headed your way!
       </p>
-    </form>
+    </div>
+    
   );
 }
