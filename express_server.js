@@ -9,20 +9,15 @@ app.use(express.static("."));
 app.use(express.json());
 
 const calculateOrderAmount = items => {
-  // Replace this constant with a calculation of the order's amount
-  // Calculate the order total on the server to prevent
-  // people from directly manipulating the amount on the client
-  const cost = 1400;
+  const cost = 1000;
+  const pinCount = Number(items.pinCount)
 
-  console.log("##############");
-  console.log(items);
-  console.log("##############");
-
-  return 1400;
+  return (cost*pinCount);
 };
 
 app.post("/create-payment-intent", async (req, res) => {
-  const { items } = req.body;
+  const items = req.body;
+
   // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
     amount: calculateOrderAmount(items),

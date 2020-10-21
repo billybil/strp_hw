@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   CardElement,
   useStripe,
@@ -13,27 +13,9 @@ export default function CheckoutForm() {
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState('');
   const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState('');
   const stripe = useStripe();
   const elements = useElements();
-
-  // useEffect(() => {
-  //   // Create PaymentIntent as soon as the page loads
-  //   window
-  //     .fetch("/create-payment-intent", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       },
-  //       body: JSON.stringify({items: [{ "numPins": numPins}]})
-  //     })
-  //     .then(res => {
-  //       return res.json();
-  //     })
-  //     .then(data => {
-  //       setClientSecret(data.clientSecret);
-  //     });
-  //   }, []);
+  let fetchData;
 
   const cardStyle = {
     style: {
@@ -54,9 +36,6 @@ export default function CheckoutForm() {
   };
 
   const handlePinChange = async ev => {
-    console.log("## handle change!");
-    console.log(ev.target.value)
-    console.log(ev) 
     setNumPins(ev.target.value);
   }
   const handleChange = async ev => {
@@ -68,7 +47,9 @@ export default function CheckoutForm() {
 
   const handleSubmit = async ev => {
     ev.preventDefault();
+    setProcessing(true);
 
+    // TODO: Add actual billing data
     const billingDetails = {
       name: "Test User",
       email: "test@test.com",
@@ -80,107 +61,36 @@ export default function CheckoutForm() {
       }
     };
 
-    let resData;
     try{
       const res = await fetch("/create-payment-intent", {
             method: "POST",
             headers: {
-                      "Content-Type": "application/json"
-                    },
-            body: JSON.stringify({items: [{ "numPins": numPins}]})
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({pinCount: numPins})
           })
-      resData = await res.json()
-      await setClientSecret(resData.clientSecret)
-
-      console.log("######## THIS IS THE FIRST PART");
-      console.log(resData)
-      console.log("######## THIS IS THE FIRST PART");
-      console.log(resData.clientSecret)
-      console.log("######## THIS IS THE FIRST PART");
-      console.log(clientSecret)
-      console.log("######## THIS IS THE FIRST PART");
+      fetchData = await res.json()
     } catch (error) {
-      console.log("### ERROR");
+      console.log("### BAD THINGS HAPPENED IN FETCH");
       console.log(error)
-      console.log("### ERROR");
+      console.log("#######################");
     }
 
-    // try{
-    //  fetch("/create-payment-intent", {
-    //     method: "POST",
-    //     headers: {
-    //               "Content-Type": "application/json"
-    //             },
-    //     body: JSON.stringify({items: [{ "numPins": numPins}]})
-    //   })
-    //   .then(res => {
-    //     console.log(res)
-    //     return res.json();
-    //   })
-    //   .then(data => {
-    //     console.log("######## HERE");
-    //     console.log(data);        
-    //     console.log("######## HERE");
-    //     console.log(data.clientSecret);
-    //     console.log("######## END");
-    //     setClientSecret(data.clientSecret);
-    //     return data.clientSecret
-    //   })
-    //   .then(async (client_secret) => {
-    //     console.log("######## client secret");
-    //     console.log(client_secret);
+    const payload = await stripe.confirmCardPayment(fetchData.clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement),
+        billing_details: billingDetails
+      }
+    });
 
-
-    //     // ev.preventDefault();
-    //     // setProcessing(true);
-    //     const payload = await stripe.confirmCardPayment(client_secret, {
-    //       payment_method: {
-    //         card: elements.getElement(CardElement),
-    //         billing_details: billingDetails
-    //       }
-    //     })
-    //     console.log("###### ");
-    //     console.log(payload);
-
-    //     if (payload.error) {
-    //       setError(`Payment failed ${payload.error.message}`);
-    //       setProcessing(false);
-    //     } else {
-    //       setError(null);
-    //       setProcessing(false);
-    //       setSucceeded(true);
-    //     }
-    //   })
-
-
-      console.log("######## THIS IS THE SECOND PART");
-
-      setProcessing(true);
-      console.log("######## THIS PART");
-
-      const payload = await stripe.confirmCardPayment(resData.clientSecret, {
-        payment_method: {
-          card: elements.getElement(CardElement),
-          billing_details: billingDetails
-        }
-      });
-      console.log("######## NEXT PART");
-
-      if (payload.error) {
-              setError(`Payment failed ${payload.error.message}`);
-              setProcessing(false);
-            } else {
-              setError(null);
-              setProcessing(false);
-              setSucceeded(true);
-            }
-
-
-    // } catch (error) {
-    //   console.log("### ERROR");
-    //   console.log(error)
-    //   console.log("### ERROR");
-    // }
+    if (payload.error) {
+      setError(`Payment failed ${payload.error.message}`);
+      setProcessing(false);
+    } else {
+      setError(null);
+      setProcessing(false);
+      setSucceeded(true);
+    }
   };
 
   return (
@@ -189,9 +99,10 @@ export default function CheckoutForm() {
         type="text"
         placeholder="GET YOUR PINS!"
         onChange={handlePinChange}
+        required
       />
 
-      <p/>
+      <br/>
         
       <CardElement id="card-element" options={cardStyle} onChange={handleChange} />
       <button
