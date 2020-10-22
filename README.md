@@ -36,7 +36,21 @@ npm start
 localhost:3000
 ```
 
-## Stripe Test Account
+## Changing Stripe Accounts
+This was made using my Stripe test account, so your tests and data will appear in my Stripe Dashboard. If you'd like to see the purchases appear in your dashboard you please grab your api keys from your (Stripe Dashboard) [https://dashboard.stripe.com/test/apikeys] and edit the following:
+
+For the backend, please edit the `./.env` file and replace the secret key with yours.
+```
+SECRET_KEY=<your_stripe_secret_key>
+```
+
+For the frontend, please edit the `./frontend/src/App.js` file and replace the publishable key with yours.
+```
+const promise = loadStripe("<your_stripe_publishable_key>");
+
+```
+
+Once these are done, please restart your services (as seen above). And you should start seeing payments in your (Stripe Dashboard)[https://dashboard.stripe.com/test/payments].
 
 
 ## Testing the Payment UI
@@ -48,6 +62,4 @@ Here are a few card numbers you can test the UI with:
 Stripe has provided a lot of test data to be used in testing the integration. Please find the full full list at [Stripe Testing](https://stripe.com/docs/testing#cards) page.
 
 ## Testing the Payment webhook
-There is a webhook built to log successful payments, this can be tested 
-
-* 
+There is a webhook built to log successful payments, this can be tested using the Stripe CLI tool.
