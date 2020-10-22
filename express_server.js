@@ -2,13 +2,15 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const fs = require('fs');
+require('dotenv').config()
 
 app.use(require('cors')());
 app.use(express.static('.'));
 app.use(express.json());
 
 // TODO: Shouldn't put the the key like this. Move it to .env.
-const stripe = require('stripe')('sk_test_51Hd23ALCD5Pym0HWlYbzYJAMuV35kyAWHhTWMFCxGjb7K9UdDitk8u8BWROT3Puz7RNzGjqmTSRjL6eHsYRf3l1300GgOkvaRo');
+const stripe = require('stripe')(process.env.SECRET_KEY);
+//const stripe = require('stripe')('sk_test_51Hd23ALCD5Pym0HWlYbzYJAMuV35kyAWHhTWMFCxGjb7K9UdDitk8u8BWROT3Puz7RNzGjqmTSRjL6eHsYRf3l1300GgOkvaRo');
 
 const calculateOrderAmount = items => {
   const cost = 1000;

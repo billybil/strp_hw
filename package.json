@@ -8,7 +8,9 @@
     "express": "^4.17.1",
     "stripe": "^8.114.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node express_server.js"
