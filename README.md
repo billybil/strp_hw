@@ -89,4 +89,4 @@ If successful you should see:
 View the `fulfillment.txt` file to see a log of the Stripe IDs of the successful payments.
 
 ## Thanks!
-Hopefully that was help and guided you through. Please reach out to me at `bil.nguyen@gmail.com` if you have any questions or if you were blocked anywhere.
+Hopefully that was helpful and guided you through everything you need. Please reach out to me at `bil.nguyen@gmail.com` if you have any questions or if you were blocked anywhere.
