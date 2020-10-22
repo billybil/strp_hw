@@ -1,7 +1,5 @@
-    ____  _________    ____    __  _________
-   / __ \/ ____/   |  / __ \  /  |/  / ____/
-  / /_/ / __/ / /| | / / / / / /|_/ / __/   
- / _, _/ /___/ ___ |/ /_/ / / /  / / /___   
-/_/ |_/_____/_/  |_/_____(_)_/  /_/_____/   
-                                            
-Hi!
+# README
+Hello! Welcome to my readme for stripe payments intregration :)
+
+## Before You Get Started
+Before you get started...
