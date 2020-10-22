@@ -31,7 +31,7 @@ To make this a little bit easier for you, I've included all the libraries you'll
 npm start
 ```
 
-3. In a different terminal tab, navigate to into the `frontend_client` directory and start the frontend client:
+3. In a different terminal tab, navigate to into the `./frontend_client` directory and start the frontend client:
 ```
 npm start
 ```
@@ -43,7 +43,7 @@ localhost:3000
 
 
 ## Changing Stripe Accounts
-This was made using my Stripe test account, so your tests and data will appear in my Stripe Dashboard not yorus. If you'd like to see the purchases appear in your dashboard please grab the API keys from your [Stripe Dashboard](https://dashboard.stripe.com/test/apikeys) and edit the following:
+This was made using my Stripe test account, so your tests and data will appear in my Stripe Dashboard not yours. If you'd like to see the purchases appear in your dashboard please grab the API keys from your [Stripe Dashboard](https://dashboard.stripe.com/test/apikeys) and edit the following files:
 
 For the backend, please edit the `./.env` file and replace the **Secret Key** with yours.
 ```
@@ -56,27 +56,27 @@ const promise = loadStripe("<your_stripe_publishable_key>");
 
 ```
 
-Once these are done, please stop backend your service (Control-C typically) and restart. Now your future test payments should start seeing payments in your [Stripe Dashboard](https://dashboard.stripe.com/test/payments).
+Once these are done, please stop backend your service (Control-C typically) and restart. Now your  test payments should start appearing in your [Stripe Dashboard](https://dashboard.stripe.com/test/payments).
 
 
 ## Testing the Payments
-Here are a few card numbers you can test the UI with:
+Here are a few card numbers you can test the Payments with:
 
 * Successful Payment:  `4242 4242 4242 4242`
 * Payment is Declined: `4000 0000 0000 9995`
 
-Stripe has provided a lot of test data to be used in testing the integration. To find the full list please head over to the (Stripe Testing)[https://stripe.com/docs/testing#cards] page.
+If interested, Stripe has provided a lot of different cards to be used in testing the integration. To find the full list please head over to the [Stripe Testing](https://stripe.com/docs/testing#cards) page.
 
 
 ## Testing the Webhook
-There is a webhook built to log successful payments for fulfillment. Successful charges are logged to `fulfillment.txt`. The webhook can be tested using the (Stripe CLI)[https://stripe.com/docs/stripe-cli] tool.
+Successful charges are handled by a webhook and logged to `fulfillment.txt`. The webhook can be tested using the [Stripe CLI](https://stripe.com/docs/stripe-cli) tool.
 
 To start testing the webhook locally, open a new terminal type in:
 ```
 stripe listen --forward-to localhost:3001/webhook
 ```
 
-In different terminal tab type in:
+To test successful payments, in different terminal tab type in:
 ```
 stripe trigger payment_intent.succeeded
 ```
@@ -86,7 +86,7 @@ If successful you should see:
 [200 POST] OK payment_intent.succeeded
 ```
 
-Open `fulfillment.txt` to see the Stripe IDs of the successful payments.
+View the `fulfillment.txt` file to see a log of the Stripe IDs of the successful payments.
 
 ## Thanks!
 Hopefully that was help and guided you through. Please reach out to me at `bil.nguyen@gmail.com` if you have any questions or if you were blocked anywhere.
