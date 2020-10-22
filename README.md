@@ -1,7 +1,7 @@
 # README
 Hello! Welcome to my readme for Stripe Payments Intent integration :)
 
-# Built With
+## Built With
 * Backend built with [Express](http://expressjs.com))
 * Frontend built with [Create React App](https://create-react-app.dev).
 
@@ -17,11 +17,17 @@ To make it easier and more consistent I've included all the libraries you'll nee
 
 1. Navigate to folder where you have this code.
 2. To start the backend:
-```npm start```
+```
+npm start
+```
 3. Change directories into the `frontend_client` directory and start the frontend client:
-```npm start```
+```
+npm start
+```
 4. At this point a browser should have opened with the payment screen, if not open your web browser and enter this into the url:
-```localhost:3000```
+```
+localhost:3000
+```
 
 
 ## Testing The Payment
