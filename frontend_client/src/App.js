@@ -3,6 +3,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import './App.css';
+import dancing_hotdog from './images/dancing_hotdog.gif'
+
 
 // Replace with your publishable test key here
 const promise = loadStripe("pk_test_51Hd23ALCD5Pym0HWAwPFZC2lyy6suo3LjBeiYUBbN0jRHXiZUUFXOv3HGDonRk6wWlt5HwHaEB8fkXYBBlzaALyQ00L8B39dQf");
@@ -16,6 +18,8 @@ class App extends Component {
   render () {
     return (
       <div className="App">
+        <img src={dancing_hotdog}/>
+
         <Elements stripe={promise}>
           <CheckoutForm />
         </Elements>
