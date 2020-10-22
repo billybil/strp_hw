@@ -38,7 +38,7 @@ export default function CheckoutForm() {
   const handlePinChange = async ev => {
     setNumPins(ev.target.value);
   }
-  
+
   const handleChange = async ev => {
     // Listen for changes in the CardElement
     // and display any errors as the customer types their card details
@@ -124,12 +124,13 @@ export default function CheckoutForm() {
 
       {/* Show any error that happens when processing the payment */}
       {error && (
-        <p className='card-error' role='alert'>
-      {error}
+        <p className='card-error' role='alert'>{error} 😢
         </p>)}
+
+      {/* TODO: Redirect users to a successful checkout page.*/}
       {/* Show a success message upon completion */}
       <p className={succeeded ? 'result-message' : 'result-message hidden'}>
-        {numPins} hotdog pins headed your way!
+        Hot diggity dog! <b>{numPins}</b> pins headed your way 🌭💨
       </p>
     </div>
     

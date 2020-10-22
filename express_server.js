@@ -1,11 +1,13 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const fs = require('fs');
+
 app.use(require('cors')());
 app.use(express.static('.'));
 app.use(express.json());
 
-// TODO: Dont put the the key like this. Move it to .env.
+// TODO: Shouldn't put the the key like this. Move it to .env.
 const stripe = require('stripe')('sk_test_51Hd23ALCD5Pym0HWlYbzYJAMuV35kyAWHhTWMFCxGjb7K9UdDitk8u8BWROT3Puz7RNzGjqmTSRjL6eHsYRf3l1300GgOkvaRo');
 
 const calculateOrderAmount = items => {
@@ -16,7 +18,8 @@ const calculateOrderAmount = items => {
 };
 
 const handleChargeSucceeded = event => {
-  ;
+  var stream = fs.createWriteStream('./fulfillment.txt', {flags:'a'});
+  stream.write(event.data.object.id + "\n");
 };
 
 app.post('/create-payment-intent', async (req, res) => {
@@ -39,10 +42,8 @@ app.post('/webhook', bodyParser.raw({type: 'application/json'}), (req, res) => {
   // Handle the event
   switch (event.type) {
     case 'charge.succeeded':
-      const paymentIntent = event.data.object;
-      console.log(`Charge Succeeded for ${paymentIntent.amount} was successful!`);
-      // Then define and call a method to handle the successful payment intent.
-      // handlePaymentIntentSucceeded(paymentIntent);
+      console.log(`Charge Succeeded for ${event.data.object.amount} was successful!`);
+      handleChargeSucceeded(event);
       break;
 
     default:
