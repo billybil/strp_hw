@@ -1,12 +1,10 @@
 # README
 Hello! Welcome to my readme for Stripe Payments Intent integration :)
-
 <br>
 
 ## Built With
 * Backend built with [Express](http://expressjs.com)
 * Frontend built with [Create React App](https://create-react-app.dev).
-
 <br>
 
 ## Before You Get Started
@@ -17,7 +15,6 @@ npm -v
 ```
 
 If you dont have NPM head over to [NPM JS](https://www.npmjs.com/get-npm) to install it on your computer.
-
 <br>
 
 ## Starting The Services
@@ -41,7 +38,6 @@ npm start
 ```
 localhost:3000
 ```
-
 <br>
 
 ## Changing Stripe Accounts
@@ -59,7 +55,6 @@ const promise = loadStripe("<your_stripe_publishable_key>");
 ```
 
 Once these are done, please restart your services (as seen above). And you should start seeing payments in your (Stripe Dashboard)[https://dashboard.stripe.com/test/payments].
-
 <br>
 
 ## Testing the Payment UI
@@ -69,6 +64,7 @@ Here are a few card numbers you can test the UI with:
 * Payment is Declined: `4000 0000 0000 9995`
 
 Stripe has provided a lot of test data to be used in testing the integration. Please find the full full list at [Stripe Testing](https://stripe.com/docs/testing#cards) page.
+<br>
 
 ## Testing the Payment webhook
 There is a webhook built to log successful payments, this can be tested using the Stripe CLI tool.
