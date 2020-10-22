@@ -1,7 +1,7 @@
 # README
 ![Screenshot of project](/images/homework_screenshot.png)
 
-Hello! Welcome to my attempt at working through aStripe Payments Intent integration :)
+Hello! Welcome to my attempt at working through a Stripe Payments Intent integration :)
  
 
 ## Built With
@@ -20,7 +20,7 @@ If you dont have NPM head over to [NPM JS](https://www.npmjs.com/get-npm) to ins
 
 
 ## Starting The Services
-To make it easier and more consistent all the libraries you'll need to run are included in this repo. 
+To make this a little bit easier for you, I've included all the libraries you'll need to run in this repo.
 
 1. Please make sure you have access to have a few tab sready  to start the backend and frontend services. 
 
@@ -31,7 +31,7 @@ To make it easier and more consistent all the libraries you'll need to run are i
 npm start
 ```
 
-4. Change directories into the `frontend_client` directory and start the frontend client:
+4. In a different terminal tab, change directories into the `frontend_client` directory and start the frontend client:
 ```
 npm start
 ```
@@ -76,9 +76,17 @@ To start testing the webhook locally, open a new terminal type in:
 stripe listen --forward-to localhost:3001/webhook
 ```
 
-and in another terminal tab type in:
+In different terminal tab type in:
 ```
 stripe trigger payment_intent.succeeded
 ```
 
+If successful you should see:
+```
+[200 POST] OK payment_intent.succeeded
+```
+
 Open `fulfillment.txt` to see the Stripe IDs of the successful payments.
+
+## Thanks!
+Please reach out to me at `bil.nguyen@gmail.com` if you have any questions.
