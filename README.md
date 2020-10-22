@@ -2,13 +2,13 @@
 Hello! Welcome to my readme for Stripe Payments Intent integration :)
 
 
-
+<br><br>
 ## Built With
 * Backend built with [Express](http://expressjs.com)
 * Frontend built with [Create React App](https://create-react-app.dev).
 
 
-
+<br><br>
 ## Before You Get Started
 Before you get started lets make sure you can start the services you need. Please open your Terminal and check if you have NPM installed with the following command:
 
@@ -41,7 +41,7 @@ localhost:3000
 ```
 
 
-
+<br><br>
 ## Changing Stripe Accounts
 This was made using my Stripe test account, so your tests and data will appear in my Stripe Dashboard. If you'd like to see the purchases appear in your dashboard you please grab your api keys from your (Stripe Dashboard) [https://dashboard.stripe.com/test/apikeys] and edit the following:
 
@@ -59,7 +59,7 @@ const promise = loadStripe("<your_stripe_publishable_key>");
 Once these are done, please restart your services (as seen above). And you should start seeing payments in your (Stripe Dashboard)[https://dashboard.stripe.com/test/payments].
 
 
-
+<br><br>
 ## Testing the Payment UI
 Here are a few card numbers you can test the UI with:
 
