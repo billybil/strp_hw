@@ -3,7 +3,7 @@ Hello! Welcome to my attempt at working through a Stripe Payments Intent integra
 
 ![Screenshot of project](/images/homework_screenshot.png)
 
- In this repo you'll find code to build the above. It will create a local backend/frontend for you to test payments with and it has a webhook endpoint built to test webhooks with.
+ In this repo you'll find code to build the above custom Stripe Payment module. The project will create a local backend/frontend for you to test payments with and has a webhook endpoint to log successful charges.
 
 
 ## Built With
