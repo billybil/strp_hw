@@ -3,7 +3,7 @@ Hello! Welcome to my attempt at working through a Stripe Payments Intent integra
 
 ![Screenshot of project](/images/homework_screenshot.png)
 
- In this repo you'll find code to build the above custom Stripe Payment module. The project will create a local backend/frontend for you to test payments with and has a webhook endpoint to log successful charges.
+ In this repo you'll find code to build the above, a custom Stripe Payment flow. The project will create a local backend/frontend for you to test payments with and has a webhook endpoint to log successful charges.
 
 
 ## Built With
@@ -89,4 +89,4 @@ If successful you should see:
 View the `fulfillment.txt` file to see a log of the Stripe IDs of the successful payments.
 
 ## Thanks!
-Hopefully that was helpful and guided you through everything you need. Please reach out to me at `bil.nguyen@gmail.com` if you have any questions or if you were blocked anywhere.
+Hopefully that was helpful and guided you through everything you needed. Please reach out to me at `bil.nguyen@gmail.com` if you have any questions or if you were blocked anywhere.
