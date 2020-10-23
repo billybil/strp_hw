@@ -6,7 +6,7 @@ import './App.css';
 import dancing_hotdog from './images/dancing_hotdog.gif'
 
 
-// Replace with your publishable test key here
+// Replace this with your Publishable test key
 const promise = loadStripe("pk_test_51Hd23ALCD5Pym0HWAwPFZC2lyy6suo3LjBeiYUBbN0jRHXiZUUFXOv3HGDonRk6wWlt5HwHaEB8fkXYBBlzaALyQ00L8B39dQf");
 
 class App extends Component {
